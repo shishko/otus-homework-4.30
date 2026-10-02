@@ -55,7 +55,6 @@ static void OnFileFound(object? sender, FileFoundEventArgs e)
 
     if (e.FileName.Contains("test2.txt"))
     {
-        Console.WriteLine("Обнаружен целевой файл. Инициирована отмена дальнейшего поиска...");
         e.Cancel = true;
     }
 }

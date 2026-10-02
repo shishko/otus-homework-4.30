@@ -41,10 +41,20 @@ namespace otus_homework_4._30._4.Core
                     OnFileFound(args);
 
                     /// <summary>
-                    /// Проверяем лимиты или исключение
+                    /// Проверяем исключение
                     /// </summary>
-                    if (args.Cancel || (_limit > 0 && _foundFiles >= _limit))
+                    if (args.Cancel)
                     {
+                        Console.WriteLine("Обнаружен целевой файл. Инициирована отмена дальнейшего поиска...");
+                        return true;
+                    }
+
+                    /// <summary>
+                    /// Проверяем лимиты
+                    /// </summary>
+                    if (_limit > 0 && _foundFiles >= _limit)
+                    {
+                        Console.WriteLine($"Достигнут лимит в {_limit} файлов. Инициирована остановка переборки.");
                         return true;
                     }
                 }
